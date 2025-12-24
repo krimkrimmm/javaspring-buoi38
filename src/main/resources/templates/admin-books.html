@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Admin - Books</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<header>
+    <a href="/">Trang chủ</a>
+</header>
+
+<div class="container">
+    <h2>Quản lý sách</h2>
+
+    <form action="/admin/books/save" method="post" class="card">
+        <input name="title" placeholder="Tên sách">
+        <input name="author" placeholder="Tác giả">
+        <input name="publisher" placeholder="NXB">
+        <input name="publishYear" placeholder="Năm XB">
+        <input name="price" placeholder="Giá">
+        <input name="quantity" placeholder="Số lượng">
+        <button>Lưu</button>
+    </form>
+
+    <div class="card" th:each="b : ${books}">
+
+        <p th:text="${b.title}"></p>
+        <a th:href="@{/admin/books/delete/{id}(id=${b.id})}">
+            <button>Xóa</button>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+

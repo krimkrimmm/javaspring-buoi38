@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Home</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h1>📚 Danh sách sách</h1>
+
+<div th:if="${books.isEmpty()}">
+    <p>Không có sách nào</p>
+</div>
+
+<ul>
+    <li th:each="b : ${books}">
+        <strong th:text="${b.title}"></strong>
+        - <span th:text="${b.author}"></span>
+    </li>
+</ul>
+
+</body>
+</html>

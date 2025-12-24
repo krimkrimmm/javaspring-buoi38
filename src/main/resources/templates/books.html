@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Danh sách sách</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
-<h2>Danh sách sách</h2>
-<ul>
-    <li th:each="b : ${books}">
-        <span th:text="${b.title}"></span> -
-        <span th:text="${b.author}"></span>
-    </li>
-</ul>
+
+<header>
+    <a href="/">Trang chủ</a>
+    <a href="/cart">Giỏ sách</a>
+</header>
+
+<div class="container">
+    <h2>Tất cả sách</h2>
+
+    <div class="book-grid">
+        <div class="card" th:each="b : ${books}">
+            <h3 th:text="${b.title}"></h3>
+            <p th:text="${b.author}"></p>
+            <a th:href="@{/books/{id}(id=${b.id})}">
+                <button>Xem</button>
+            </a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

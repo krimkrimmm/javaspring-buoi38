@@ -1,21 +1,35 @@
 package vn.scrip.buoi38_bvn.entites;
 
-
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
+@Table(name = "books")
 public class Book {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String title;
     private String author;
-    private int quantity;
-    private double price;
-}
+    private String publisher;
 
+    @Column(name = "publish_year")
+    private Integer publishYear;
+
+    private BigDecimal price;
+    private Integer quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    private Integer status = 1;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    // getter setter
+}

@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Giỏ sách</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
+<header>
+    <a href="/">Trang chủ</a>
+</header>
+
+<div class="container">
+    <h2>Giỏ sách của bạn</h2>
+
+    <div class="card" th:each="item : ${session.cart}">
+
+        <p th:text="${item.book.title}"></p>
+        <p>Số lượng: <span th:text="${item.quantity}"></span></p>
+    </div>
+</div>
 
 </body>
 </html>

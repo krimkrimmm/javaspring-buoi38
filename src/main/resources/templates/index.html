@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Library Home</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<h2>Library Home</h2>
-<a href="/books">Danh sách sách</a>
-<a href="/login">Đăng nhập</a>
+
+<header>
+    <a href="/">Trang chủ</a>
+    <a href="/books">Sách</a>
+    <a href="/cart">Giỏ sách</a>
+    <a href="/login">Đăng nhập</a>
+</header>
+
+<div class="container">
+
+    <h2>Sách mới & nổi bật</h2>
+    <div class="book-grid">
+        <div class="card" th:each="b : ${books}">
+            <h3 th:text="${b.title}"></h3>
+            <p>Tác giả: <span th:text="${b.author}"></span></p>
+            <a th:href="@{/books/{id}(id=${b.id})}">
+                <button>Xem chi tiết</button>
+            </a>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

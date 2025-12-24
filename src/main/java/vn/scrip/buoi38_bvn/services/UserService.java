@@ -14,14 +14,17 @@ public class UserService {
         this.repo = repo;
     }
 
-    public User register(User u) {
-        u.setRole(Role.CUSTOMER);
-        return repo.save(u);
+    public User register(User user) {
+        user.setRole(Role.CUSTOMER);
+        return repo.save(user);
     }
 
     public User login(String email, String password) {
-        User u = repo.findByEmail(email);
-        if (u != null && u.getPassword().equals(password)) return u;
+        User user = repo.findByEmail(email);
+        if (user != null && user.getPassword().equals(password)) {
+            return user;
+        }
+
         return null;
     }
 }

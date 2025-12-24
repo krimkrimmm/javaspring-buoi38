@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Chi tiết sách</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
+<header>
+    <a href="/">Trang chủ</a>
+    <a href="/cart">Giỏ sách</a>
+</header>
+
+<div class="container">
+    <div class="card">
+        <h2 th:text="${book.title}"></h2>
+        <p>Tác giả: <span th:text="${book.author}"></span></p>
+        <p>NXB: <span th:text="${book.publisher}"></span></p>
+        <p>Năm XB: <span th:text="${book.publishYear}"></span></p>
+        <p>Giá: <span th:text="${book.price}"></span></p>
+        <p>Số lượng: <span th:text="${book.quantity}"></span></p>
+
+        <form th:action="@{/cart/add/{id}(id=${book.id})}" method="post">
+            <button>Thêm vào giỏ</button>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
