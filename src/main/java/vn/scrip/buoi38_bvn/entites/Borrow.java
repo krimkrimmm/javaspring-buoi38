@@ -20,7 +20,7 @@ public class Borrow {
     private int quantity;
     private LocalDate borrowDate;
 
-    // ===== Getter Setter =====
+    // Getter & Setter
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 

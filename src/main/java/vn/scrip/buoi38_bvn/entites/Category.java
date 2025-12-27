@@ -1,7 +1,6 @@
 package vn.scrip.buoi38_bvn.entites;
 
 import jakarta.persistence.*;
-
 @Entity
 @Table(name = "categories")
 public class Category {
@@ -12,20 +11,10 @@ public class Category {
 
     private String name;
 
-    // getter setter
-    public Integer getId() {
-        return id;
-    }
+    // Getter Setter
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 }

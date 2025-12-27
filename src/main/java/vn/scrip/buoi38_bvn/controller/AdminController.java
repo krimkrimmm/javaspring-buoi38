@@ -1,4 +1,5 @@
 package vn.scrip.buoi38_bvn.controller;
+
 import vn.scrip.buoi38_bvn.entites.Book;
 import vn.scrip.buoi38_bvn.services.BookService;
 import org.springframework.stereotype.Controller;
@@ -11,9 +12,7 @@ public class AdminController {
 
     private final BookService service;
 
-    public AdminController(BookService service) {
-        this.service = service;
-    }
+    public AdminController(BookService service) { this.service = service; }
 
     @GetMapping("/books")
     public String manageBooks(Model model) {
@@ -33,3 +32,6 @@ public class AdminController {
         return "redirect:/admin/books";
     }
 }
+
+
+

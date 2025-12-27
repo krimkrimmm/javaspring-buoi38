@@ -10,9 +10,7 @@ public class UserService {
 
     private final UserRepository repo;
 
-    public UserService(UserRepository repo) {
-        this.repo = repo;
-    }
+    public UserService(UserRepository repo) { this.repo = repo; }
 
     public User register(User user) {
         user.setRole(Role.CUSTOMER);
@@ -21,10 +19,10 @@ public class UserService {
 
     public User login(String email, String password) {
         User user = repo.findByEmail(email);
-        if (user != null && user.getPassword().equals(password)) {
-            return user;
-        }
-
+        if (user != null && user.getPassword().equals(password)) return user;
         return null;
     }
 }
+
+
+

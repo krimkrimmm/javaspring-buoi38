@@ -1,13 +1,10 @@
 package vn.scrip.buoi38_bvn.entites;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
-@Getter @Setter
 public class User {
 
     @Id
@@ -23,8 +20,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
@@ -33,8 +28,25 @@ public class User {
 
     @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    // Getter & Setter
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+
+    public String getFullName() { return fullName; }
+    public void setFullName(String fullName) { this.fullName = fullName; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
+    public Role getRole() { return role; }
+    public void setRole(Role role) { this.role = role; }
+
+    public Integer getStatus() { return status; }
+    public void setStatus(Integer status) { this.status = status; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
 }
-
-
-
-
