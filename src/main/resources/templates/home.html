@@ -2,23 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Library Home</title>
+    <title>Thư viện</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
-
-<h1>📚 Danh sách sách</h1>
-
-<div th:if="${books.isEmpty()}">
-    <p>Không có sách nào</p>
+<header class="d-flex align-items-center">
+    <a th:href="@{/}">Trang chủ</a>
+    <a th:href="@{/books}">Sách</a>
+    <a th:href="@{/cart}">Giỏ sách</a>
+    <a th:href="@{/login}">Đăng nhập</a>
+</header>
+<div class="container mt-4">
+    <h2>Sách mới & nổi bật</h2>
+    <div class="book-grid mt-3">
+        <div class="card p-3" th:each="b : ${books}">
+            <h4 th:text="${b.title}"></h4>
+            <p>Tác giả: <span th:text="${b.author}"></span></p>
+            <p>NXB: <span th:text="${b.publisher}"></span></p>
+            <a th:href="@{/books/{id}(id=${b.id})}"><button class="btn btn-primary w-100">Xem chi tiết</button></a>
+        </div>
+    </div>
 </div>
-
-<ul>
-    <li th:each="b : ${books}">
-        <strong th:text="${b.title}"></strong>
-        - <span th:text="${b.author}"></span>
-    </li>
-</ul>
-
 </body>
 </html>

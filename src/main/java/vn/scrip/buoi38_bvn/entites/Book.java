@@ -1,16 +1,16 @@
 package vn.scrip.buoi38_bvn.entites;
-
 import jakarta.persistence.*;
+import vn.scrip.buoi38_bvn.entites.Category;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 @Entity
+
 @Table(name = "books")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String title;
     private String author;
@@ -31,33 +31,25 @@ public class Book {
     @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    // Getter & Setter
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
-
+    // Getters & Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
-
     public String getAuthor() { return author; }
     public void setAuthor(String author) { this.author = author; }
-
     public String getPublisher() { return publisher; }
     public void setPublisher(String publisher) { this.publisher = publisher; }
-
     public Integer getPublishYear() { return publishYear; }
     public void setPublishYear(Integer publishYear) { this.publishYear = publishYear; }
-
     public BigDecimal getPrice() { return price; }
     public void setPrice(BigDecimal price) { this.price = price; }
-
     public Integer getQuantity() { return quantity; }
     public void setQuantity(Integer quantity) { this.quantity = quantity; }
-
     public Category getCategory() { return category; }
     public void setCategory(Category category) { this.category = category; }
-
     public Integer getStatus() { return status; }
     public void setStatus(Integer status) { this.status = status; }
-
     public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }

@@ -10,18 +10,21 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final UserService service;
-
     public AuthController(UserService service) { this.service = service; }
 
     @GetMapping("/login")
     public String loginForm() { return "login"; }
 
     @PostMapping("/login")
-    public String login(String email, String password, HttpSession session) {
+    public String login(@RequestParam String email,
+                        @RequestParam String password,
+                        HttpSession session) {
         User user = service.login(email, password);
         if(user != null) {
             session.setAttribute("user", user);
-            return "redirect:/";
+            if(user.getRole().name().equals("ADMIN")) return "redirect:/admin";
+            else if(user.getRole().name().equals("LIBRARIAN")) return "redirect:/librarian";
+            else return "redirect:/reader";
         }
         return "login";
     }
@@ -35,4 +38,9 @@ public class AuthController {
         return "redirect:/login";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
+    }
 }

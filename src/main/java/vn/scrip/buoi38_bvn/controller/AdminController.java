@@ -1,7 +1,9 @@
 package vn.scrip.buoi38_bvn.controller;
 
-import vn.scrip.buoi38_bvn.entites.Book;
+import vn.scrip.buoi38_bvn.entites.User;
+import vn.scrip.buoi38_bvn.services.UserService;
 import vn.scrip.buoi38_bvn.services.BookService;
+import vn.scrip.buoi38_bvn.services.BorrowService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,28 +12,27 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private final BookService service;
+    private final UserService userService;
+    private final BookService bookService;
+    private final BorrowService borrowService;
 
-    public AdminController(BookService service) { this.service = service; }
-
-    @GetMapping("/books")
-    public String manageBooks(Model model) {
-        model.addAttribute("books", service.getAll());
-        return "admin-books";
+    public AdminController(UserService userService, BookService bookService, BorrowService borrowService) {
+        this.userService = userService;
+        this.bookService = bookService;
+        this.borrowService = borrowService;
     }
 
-    @PostMapping("/books/save")
-    public String save(Book book) {
-        service.save(book);
-        return "redirect:/admin/books";
+    @GetMapping
+    public String dashboard(Model model) {
+        model.addAttribute("users", userService.getAll());
+        model.addAttribute("books", bookService.getAll());
+        model.addAttribute("borrows", borrowService.getAll());
+        return "admin-dashboard";
     }
 
-    @GetMapping("/books/delete/{id}")
-    public String delete(@PathVariable Integer id) {
-        service.delete(id);
-        return "redirect:/admin/books";
+    @GetMapping("/users/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.delete(id);
+        return "redirect:/admin";
     }
 }
-
-
-

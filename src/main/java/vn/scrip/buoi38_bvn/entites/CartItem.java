@@ -1,5 +1,7 @@
 package vn.scrip.buoi38_bvn.entites;
 
+import java.awt.print.Book;
+
 public class CartItem {
 
     private Book book;
@@ -12,7 +14,6 @@ public class CartItem {
 
     public Book getBook() { return book; }
     public void setBook(Book book) { this.book = book; }
-
     public int getQuantity() { return quantity; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
 }

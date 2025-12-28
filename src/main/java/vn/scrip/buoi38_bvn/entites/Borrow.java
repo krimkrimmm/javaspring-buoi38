@@ -9,20 +9,22 @@ public class Borrow {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne
-    private User user;
+    private User user;  // dùng entity User đúng package
 
     @ManyToOne
-    private Book book;
+    private Book book;  // dùng entity Book đúng package
 
     private int quantity;
     private LocalDate borrowDate;
+    private LocalDate returnDate;
+    private String status; // "Đang mượn", "Đã trả"
 
-    // Getter & Setter
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    // Getters & Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
@@ -35,4 +37,11 @@ public class Borrow {
 
     public LocalDate getBorrowDate() { return borrowDate; }
     public void setBorrowDate(LocalDate borrowDate) { this.borrowDate = borrowDate; }
+
+    public LocalDate getReturnDate() { return returnDate; }
+    public void setReturnDate(LocalDate returnDate) { this.returnDate = returnDate; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+
 }

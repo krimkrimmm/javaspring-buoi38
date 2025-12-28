@@ -12,21 +12,26 @@ import java.util.List;
 @Controller
 @RequestMapping("/cart")
 public class CartController {
-
     private final BookService service;
-
-    public CartController(BookService service) { this.service = service; }
+    public CartController(BookService service){ this.service = service; }
 
     @GetMapping
-    public String viewCart() { return "cart"; }
+    public String viewCart(){ return "cart"; }
 
-    @PostMapping("/add/{id}")
-    public String add(@PathVariable Integer id, HttpSession session) {
-        Book book = service.getById(id);
-        List<CartItem> cart = (List<CartItem>) session.getAttribute("cart");
-        if(cart == null) cart = new ArrayList<>();
-        cart.add(new CartItem(book,1));
-        session.setAttribute("cart", cart);
-        return "redirect:/cart";
-    }
+//    @PostMapping("/add/{id}")
+//    public String add(@PathVariable Long id, HttpSession session){
+//        Book b = service.getById(id);
+//        List<CartItem> cart = (List<CartItem>) session.getAttribute("cart");
+//        if(cart == null) cart = new ArrayList<>();
+//        cart.add(new CartItem(b,1));
+//        session.setAttribute("cart", cart);
+//        return "redirect:/cart";
+//    }
 }
+
+
+
+
+
+
+
