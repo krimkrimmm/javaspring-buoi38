@@ -1,37 +1,29 @@
 package vn.scrip.buoi38_bvn.entites;
+
 import jakarta.persistence.*;
-import vn.scrip.buoi38_bvn.entites.Category;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-@Entity
 
+@Entity
 @Table(name = "books")
 public class Book {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
     private String author;
     private String publisher;
-
     @Column(name = "publish_year")
     private Integer publishYear;
-
     private BigDecimal price;
     private Integer quantity;
-
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-
     private Integer status = 1;
-
     @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    // Getters & Setters
+    // Getter Setter
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getTitle() { return title; }
@@ -51,5 +43,6 @@ public class Book {
     public Integer getStatus() { return status; }
     public void setStatus(Integer status) { this.status = status; }
     public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }
+
+

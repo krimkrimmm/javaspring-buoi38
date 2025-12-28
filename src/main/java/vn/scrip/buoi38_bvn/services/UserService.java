@@ -1,29 +1,57 @@
 package vn.scrip.buoi38_bvn.services;
 
+import org.springframework.stereotype.Service;
 import vn.scrip.buoi38_bvn.entites.Role;
 import vn.scrip.buoi38_bvn.entites.User;
 import vn.scrip.buoi38_bvn.repository.UserRepository;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
+
     private final UserRepository repo;
 
-    public UserService(UserRepository repo) { this.repo = repo; }
+    public UserService(UserRepository repo) {
+        this.repo = repo;
+    }
 
+    // Đăng ký user mới
     public User register(User user) {
         user.setRole(Role.READER);
         return repo.save(user);
     }
 
+    // Đăng nhập
     public User login(String email, String password) {
         User user = repo.findByEmail(email);
-        if(user != null && user.getPassword().equals(password)) return user;
+        if (user != null && user.getPassword().equals(password)) {
+            return user;
+        }
         return null;
     }
 
-    public User getById(Long id) { return repo.findById(id).orElse(null); }
-    public void delete(Long id) { repo.deleteById(id); }
-    public User save(User user) { return repo.save(user); }
-    public java.util.List<User> getAll() { return repo.findAll(); }
+    // Lấy danh sách tất cả user
+    public List<User> getAllUsers() {
+        return repo.findAll();
+    }
+
+    // Cập nhật role của user
+    public void updateRole(Long id, String roleStr) {
+        User user = repo.findById(id).orElse(null);
+        if (user != null) {
+            try {
+                Role role = Role.valueOf(roleStr.toUpperCase());
+                user.setRole(role);
+                repo.save(user);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Role không hợp lệ: " + roleStr);
+            }
+        }
+    }
+
+    // Xóa user
+    public void delete(Long id) {
+        repo.deleteById(id);
+    }
 }

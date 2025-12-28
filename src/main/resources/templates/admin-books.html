@@ -1,81 +1,29 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Quản lý Sách</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <title>Admin - Quản lý sách</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
-<header class="d-flex justify-content-between align-items-center p-3 bg-dark text-white">
-    <div class="d-flex align-items-center gap-2">
-        <img src="/images/library-logo.png" alt="Library Logo" width="40">
-        <span class="fs-4 fw-bold">Quản trị Thư viện</span>
-    </div>
-    <nav>
-        <a href="index.html" class="text-white me-3">Trang chủ</a>
-        <a href="admin-books.html" class="text-white me-3">Quản lý sách</a>
-        <a href="admin-users.html" class="text-white me-3">Người dùng</a>
-        <a href="admin-borrows.html" class="text-white">Mượn trả</a>
-    </nav>
-</header>
-
-<div class="container my-5">
-    <div class="table-wrapper p-3 bg-white rounded shadow-sm">
-        <div class="d-flex justify-content-between mb-3">
-            <h2>Quản lý Sách</h2>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal" onclick="openAddModal()">Thêm Sách</button>
-        </div>
-
-        <table class="table table-bordered table-hover">
-            <thead class="table-light">
-            <tr>
-                <th>ID</th>
-                <th>Tiêu đề</th>
-                <th>Tác giả</th>
-                <th>NXB</th>
-                <th>Năm XB</th>
-                <th>Giá</th>
-                <th>Số lượng</th>
-                <th>Thể loại</th>
-                <th>Hành động</th>
-            </tr>
-            </thead>
-            <tbody id="bookTable">
-            <!-- Dữ liệu load JS -->
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<!-- Modal Thêm/Sửa sách -->
-<div class="modal fade" id="bookModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="modalTitle">Thêm Sách</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form id="bookForm">
-                    <input type="hidden" id="bookId">
-                    <div class="mb-3"><label>Tiêu đề</label><input type="text" id="title" class="form-control" required></div>
-                    <div class="mb-3"><label>Tác giả</label><input type="text" id="author" class="form-control" required></div>
-                    <div class="mb-3"><label>NXB</label><input type="text" id="publisher" class="form-control" required></div>
-                    <div class="mb-3"><label>Năm XB</label><input type="number" id="publishYear" class="form-control" required></div>
-                    <div class="mb-3"><label>Giá</label><input type="number" id="price" class="form-control" required></div>
-                    <div class="mb-3"><label>Số lượng</label><input type="number" id="quantity" class="form-control" required></div>
-                    <div class="mb-3"><label>Thể loại</label><input type="text" id="category" class="form-control" required></div>
-                    <button type="submit" class="btn btn-success w-100">Lưu</button>
-                </form>
-            </div>
+<div class="container mt-4">
+    <h2>Quản lý sách</h2>
+    <form action="/admin/books/save" method="post" class="mb-3 row g-2">
+        <div class="col"><input class="form-control" name="title" placeholder="Tên sách"></div>
+        <div class="col"><input class="form-control" name="author" placeholder="Tác giả"></div>
+        <div class="col"><input class="form-control" name="publisher" placeholder="NXB"></div>
+        <div class="col"><input class="form-control" name="publishYear" placeholder="Năm XB"></div>
+        <div class="col"><input class="form-control" name="price" placeholder="Giá"></div>
+        <div class="col"><input class="form-control" name="quantity" placeholder="Số lượng"></div>
+        <div class="col"><button class="btn btn-primary">Lưu</button></div>
+    </form>
+    <div class="list-group" th:each="b : ${books}">
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <span th:text="${b.title} + ' - ' + b.author"></span>
+            <a th:href="@{/admin/books/delete/{id}(id=${b.id})}" class="btn btn-danger btn-sm">Xóa</a>
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
 </body>
 </html>
