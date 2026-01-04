@@ -34,5 +34,6 @@ public class User {
     public void setRole(Role role) { this.role = role; }
     public Integer getStatus() { return status; }
     public void setStatus(Integer status) { this.status = status; }
+
     public LocalDateTime getCreatedAt() { return createdAt; }
 }

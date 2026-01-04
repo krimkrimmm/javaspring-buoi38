@@ -13,6 +13,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/librarian")
 public class LibrarianController {
+
     private final BookService bookService;
     private final BorrowService borrowService;
 
@@ -23,7 +24,7 @@ public class LibrarianController {
 
     @GetMapping("/books")
     public String manageBooks(Model model) {
-        model.addAttribute("books", bookService.getAll());
+        model.addAttribute("books", bookService.findAll()); // ✅ SỬA
         return "librarian-books";
     }
 

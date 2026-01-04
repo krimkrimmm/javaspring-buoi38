@@ -1,5 +1,6 @@
 package vn.scrip.buoi38_bvn.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -9,7 +10,7 @@ import vn.scrip.buoi38_bvn.entites.User;
 import vn.scrip.buoi38_bvn.services.BookService;
 import vn.scrip.buoi38_bvn.services.BorrowService;
 
-import jakarta.servlet.http.HttpSession;
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/borrow")
@@ -27,35 +28,32 @@ public class BorrowController {
     public String borrowBook(@PathVariable Long bookId,
                              HttpSession session,
                              RedirectAttributes redirectAttributes) {
+
         User user = (User) session.getAttribute("user");
-        Book book = bookService.getById(bookId);
+        Book book = bookService.findById(bookId); // ✅ SỬA Ở ĐÂY
 
-        if (user != null && book != null) {
-            if (book.getQuantity() > 0) {
-                Borrow borrow = new Borrow();
-                borrow.setUser(user);
-                borrow.setBook(book);
-                borrow.setQuantity(1);
-                borrow.setBorrowDate(java.time.LocalDate.now());
-
-                // 🔹 Sửa dòng này:
-                borrowService.borrow(borrow);  // trước đây là borrowBook(borrow)
-
-                // Giảm số lượng sách
-                book.setQuantity(book.getQuantity() - 1);
-                bookService.save(book);
-
-                redirectAttributes.addFlashAttribute("successMessage",
-                        "Bạn đã mượn sách '" + book.getTitle() + "' thành công!");
-            } else {
-                redirectAttributes.addFlashAttribute("errorMessage",
-                        "Sách '" + book.getTitle() + "' hiện đã hết!");
-            }
-        } else {
-            redirectAttributes.addFlashAttribute("errorMessage",
-                    "Không thể mượn sách. Vui lòng đăng nhập hoặc kiểm tra sách.");
+        if (user == null) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Vui lòng đăng nhập");
+            return "redirect:/login";
         }
 
+        if (book == null || book.getQuantity() <= 0) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Sách đã hết");
+            return "redirect:/books";
+        }
+
+        Borrow borrow = new Borrow();
+        borrow.setUser(user);
+        borrow.setBook(book);
+        borrow.setQuantity(1);
+        borrow.setBorrowDate(LocalDate.now());
+
+        borrowService.borrow(borrow);
+
+        book.setQuantity(book.getQuantity() - 1);
+        bookService.save(book);
+
+        redirectAttributes.addFlashAttribute("successMessage", "Mượn sách thành công");
         return "redirect:/reader/borrows";
     }
 }

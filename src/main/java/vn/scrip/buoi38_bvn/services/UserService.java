@@ -18,9 +18,14 @@ public class UserService {
 
     // Đăng ký user mới
     public User register(User user) {
+        if (repo.findByEmail(user.getEmail()) != null) {
+            throw new RuntimeException("Email đã tồn tại");
+        }
         user.setRole(Role.READER);
+        user.setStatus(1);
         return repo.save(user);
     }
+
 
     // Đăng nhập
     public User login(String email, String password) {
@@ -55,3 +60,4 @@ public class UserService {
         repo.deleteById(id);
     }
 }
+

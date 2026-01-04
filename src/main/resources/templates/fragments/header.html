@@ -1,0 +1,17 @@
+<header xmlns:th="http://www.w3.org/1999/xhtml">
+    <a href="/">📚 Mini Library</a>
+    <a href="/">Trang chủ</a>
+    <a href="/books">Sách</a>
+    <a href="/cart">Giỏ sách</a>
+
+    <span th:if="${session.user == null}">
+        <a href="/login">Đăng nhập</a>
+        <a href="/register">Đăng ký</a>
+    </span>
+
+    <span th:if="${session.user != null}">
+        <b th:text="${session.user.fullName}"></b>
+        <a href="/logout">Đăng xuất</a>
+    </span>
+</header>
+

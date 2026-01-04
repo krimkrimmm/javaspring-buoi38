@@ -1,14 +1,12 @@
 package vn.scrip.buoi38_bvn.controller;
 
-import vn.scrip.buoi38_bvn.entites.Book;
-import vn.scrip.buoi38_bvn.entites.Borrow;
-import vn.scrip.buoi38_bvn.entites.User;
-import vn.scrip.buoi38_bvn.services.BookService;
-import vn.scrip.buoi38_bvn.services.BorrowService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import vn.scrip.buoi38_bvn.entites.*;
+import vn.scrip.buoi38_bvn.services.BookService;
+import vn.scrip.buoi38_bvn.services.BorrowService;
 
 @Controller
 @RequestMapping("/reader")
@@ -34,7 +32,7 @@ public class ReaderController {
     @PostMapping("/borrow/{bookId}")
     public String borrowBook(@PathVariable Long bookId, HttpSession session) {
         User user = (User) session.getAttribute("user");
-        Book book = bookService.getById(bookId);
+        Book book = bookService.findById(bookId); // ✅ SỬA
 
         if (user != null && book != null && book.getQuantity() > 0) {
             Borrow borrow = new Borrow();
