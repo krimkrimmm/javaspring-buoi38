@@ -7,18 +7,21 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div th:replace="fragments/header :: header"></div>
 <div class="container mt-4">
     <h2 class="mb-3">Giỏ sách của bạn</h2>
     <div id="cart-items" class="list-group">
         <div class="list-group-item d-flex justify-content-between align-items-center"
              th:each="item, iterStat : ${session.cart}" th:data-index="${iterStat.index}">
             <div>
-                <h5 th:text="${item.book.title}"></h5>
-                <p>Số lượng: <span class="quantity" th:text="${item.quantity}"></span></p>
+                <span>Tên sách<h5 th:text="${item.book.title}"></h5></span>
+                <p>Số lượng mua: <span class="quantity" th:text="${item.quantity}"></span></p>
             </div>
             <div>
-                <button class="btn btn-sm btn-success increase">+</button>
-                <button class="btn btn-sm btn-warning decrease">-</button>
+<!--                <p>Số lượng: </p>-->
+                <button class="btn btn-sm btn-success decrease ">-</button>
+<!--                <span class="quantity" th:text="${item.quantity}"></span>-->
+                <button class="btn btn-sm btn-warning increase">+</button>
                 <button class="btn btn-sm btn-danger remove">Xóa</button>
             </div>
         </div>
@@ -29,7 +32,7 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const cartItems = document.querySelectorAll('#cart-items .list-group-item');
 
         cartItems.forEach(item => {
@@ -43,7 +46,7 @@
 
             item.querySelector('.decrease').addEventListener('click', () => {
                 let q = parseInt(quantityEl.textContent);
-                if(q > 1) quantityEl.textContent = q - 1;
+                if (q > 1) quantityEl.textContent = q - 1;
             });
 
             item.querySelector('.remove').addEventListener('click', () => {

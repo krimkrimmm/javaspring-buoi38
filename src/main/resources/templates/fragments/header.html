@@ -5,8 +5,8 @@
     <a href="/cart">Giỏ sách</a>
 
     <span th:if="${session.user == null}">
-        <a href="/login">Đăng nhập</a>
-        <a href="/register">Đăng ký</a>
+        <a href="/login" style="float: right">Đăng nhập</a>
+        <a href="/register"style="float: right">Đăng ký</a>
     </span>
 
     <span th:if="${session.user != null}">
