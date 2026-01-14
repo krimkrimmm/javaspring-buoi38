@@ -15,7 +15,7 @@
              th:each="item, iterStat : ${session.cart}" th:data-index="${iterStat.index}">
             <div>
                 <span>Tên sách<h5 th:text="${item.book.title}"></h5></span>
-                <p>Số lượng mua: <span class="quantity" th:text="${item.quantity}"></span></p>
+                <p>Số lượng mượn: <span class="quantity" th:text="${item.quantity}"></span></p>
             </div>
             <div>
                 <!--                <p>Số lượng: </p>-->
@@ -54,7 +54,7 @@
             });
         });
         document.getElementById('checkout').addEventListener('click', () => {
-            alert('Đã xác nhận mượn sách! (chức năng backend sẽ xử lý)');
+            alert('Đã xác nhận mượn sách!');
         });
     });
 </script>
