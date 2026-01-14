@@ -193,5 +193,3 @@ renderBooksTable();
 renderUsers();
 renderBorrows();
 renderCart();
-
-

@@ -3,8 +3,10 @@ package vn.scrip.buoi38_bvn.controller;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import vn.scrip.buoi38_bvn.entites.User;
+import vn.scrip.buoi38_bvn.entities.User;
 import vn.scrip.buoi38_bvn.services.UserService;
+
+import static vn.scrip.buoi38_bvn.entities.Role.*;
 
 @Controller
 public class AuthController {
@@ -45,4 +47,3 @@ public class AuthController {
         return "redirect:/login";
     }
 }
-

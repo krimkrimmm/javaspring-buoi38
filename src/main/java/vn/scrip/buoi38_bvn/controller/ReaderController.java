@@ -4,7 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import vn.scrip.buoi38_bvn.entites.*;
+import vn.scrip.buoi38_bvn.entities.*;
 import vn.scrip.buoi38_bvn.services.BookService;
 import vn.scrip.buoi38_bvn.services.BorrowService;
 

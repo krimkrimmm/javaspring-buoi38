@@ -15,6 +15,7 @@
         <div class="card" th:each="book : ${books}">
             <h3 th:text="${book.title}"></h3>
             <p>Tác giả: <span th:text="${book.author}"></span></p>
+            <!--            <img th:src="@{/images/{img}(img=${b.image})}">-->
             <p>NXB: <span th:text="${book.publisher}"></span></p>
             <p>Giá: <span th:text="${book.price}"></span> đ</p>
 

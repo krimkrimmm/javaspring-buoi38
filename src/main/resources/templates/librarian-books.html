@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý sách - Librarian</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding: 20px; background-color: #f8f9fa; }
+        h1 { margin-bottom: 20px; }
+        .table td, .table th { vertical-align: middle; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Quản lý sách</h1>
+
+    <form th:action="@{/librarian/books/save}" method="post" class="row g-3 mb-4">
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="title" placeholder="Tên sách" required>
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="author" placeholder="Tác giả" required>
+        </div>
+        <div class="col-md-2">
+            <input type="number" class="form-control" name="quantity" placeholder="Số lượng" required>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-success">Thêm / Cập nhật</button>
+        </div>
+    </form>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Tên sách</th>
+            <th>Tác giả</th>
+            <th>Số lượng</th>
+            <th>Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}">1</td>
+            <td th:text="${book.title}">Tên sách</td>
+            <td th:text="${book.author}">Tác giả</td>
+            <td th:text="${book.quantity}">10</td>
+            <td>
+                <a th:href="@{'/librarian/books/delete/' + ${book.id}}" class="btn btn-danger btn-sm">Xóa</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+

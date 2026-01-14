@@ -4,9 +4,9 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import vn.scrip.buoi38_bvn.entites.Book;
-import vn.scrip.buoi38_bvn.entites.Borrow;
-import vn.scrip.buoi38_bvn.entites.User;
+import vn.scrip.buoi38_bvn.entities.Book;
+import vn.scrip.buoi38_bvn.entities.Borrow;
+import vn.scrip.buoi38_bvn.entities.User;
 import vn.scrip.buoi38_bvn.services.BookService;
 import vn.scrip.buoi38_bvn.services.BorrowService;
 

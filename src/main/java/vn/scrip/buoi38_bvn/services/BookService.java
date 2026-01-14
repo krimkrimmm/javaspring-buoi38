@@ -1,6 +1,6 @@
 package vn.scrip.buoi38_bvn.services;
 
-import vn.scrip.buoi38_bvn.entites.Book;
+import vn.scrip.buoi38_bvn.entities.Book;
 import java.util.List;
 
 public interface BookService {

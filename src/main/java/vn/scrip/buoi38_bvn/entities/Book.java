@@ -1,4 +1,4 @@
-package vn.scrip.buoi38_bvn.entites;
+package vn.scrip.buoi38_bvn.entities;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
@@ -16,6 +16,7 @@ public class Book {
     private Integer publishYear;
     private BigDecimal price;
     private Integer quantity;
+    private String image;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -43,6 +44,6 @@ public class Book {
     public Integer getStatus() { return status; }
     public void setStatus(Integer status) { this.status = status; }
     public LocalDateTime getCreatedAt() { return createdAt; }
+    public String getImage() { return image; }
+    public void setImage(String image) { this.image = image; }
 }
-
-

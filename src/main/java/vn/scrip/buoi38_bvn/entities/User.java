@@ -1,4 +1,4 @@
-package vn.scrip.buoi38_bvn.entites;
+package vn.scrip.buoi38_bvn.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

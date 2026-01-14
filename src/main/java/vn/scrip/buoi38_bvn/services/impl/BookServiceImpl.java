@@ -1,7 +1,7 @@
 package vn.scrip.buoi38_bvn.services.impl;
 
 import org.springframework.stereotype.Service;
-import vn.scrip.buoi38_bvn.entites.Book;
+import vn.scrip.buoi38_bvn.entities.Book;
 import vn.scrip.buoi38_bvn.repository.BookRepository;
 import vn.scrip.buoi38_bvn.services.BookService;
 

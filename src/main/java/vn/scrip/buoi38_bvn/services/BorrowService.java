@@ -1,7 +1,7 @@
 package vn.scrip.buoi38_bvn.services;
 
 import org.springframework.stereotype.Service;
-import vn.scrip.buoi38_bvn.entites.Borrow;
+import vn.scrip.buoi38_bvn.entities.Borrow;
 import vn.scrip.buoi38_bvn.repository.BorrowRepository;
 
 import java.time.LocalDate;
@@ -42,7 +42,3 @@ public class BorrowService {
         return repo.findById(id).orElse(null);
     }
 }
-
-
-
-

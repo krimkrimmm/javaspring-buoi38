@@ -1,11 +1,14 @@
 package vn.scrip.buoi38_bvn.repository;
 
-import vn.scrip.buoi38_bvn.entites.Borrow;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import vn.scrip.buoi38_bvn.entities.Borrow;
+
 import java.util.List;
 
 @Repository
 public interface BorrowRepository extends JpaRepository<Borrow, Long> {
-    List<Borrow> findByUserId(Long userId); // cần để findByUser gọi được
+
+    // Lấy danh sách mượn theo userId
+    List<Borrow> findByUserId(Long userId);
 }

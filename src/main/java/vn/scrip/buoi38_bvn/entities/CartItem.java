@@ -1,4 +1,4 @@
-package vn.scrip.buoi38_bvn.entites;
+package vn.scrip.buoi38_bvn.entities;
 public class CartItem {
     private Book book;
     private int quantity;
@@ -13,7 +13,3 @@ public class CartItem {
     public int getQuantity() { return quantity; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
 }
-
-
-
-
