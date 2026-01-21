@@ -1,11 +1,13 @@
-<header xmlns:th="http://www.w3.org/1999/xhtml">
+<header xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <a href="/">📚 Mini Library</a>
     <a href="/">Trang chủ</a>
     <a href="/books">Sách</a>
     <a href="/cart">Giỏ sách</a>
+    <a href="/history">Lịch sử mượn</a>
 
-    <span th:if="${session.user == null}">
-        <a href="/login" style="float: right">Đăng nhập</a>
+    <span th:if="${user == null}">
+    <a href="/login" style="float: right">Đăng nhập</a>
         <a href="/register"style="float: right">Đăng ký</a>
     </span>
 

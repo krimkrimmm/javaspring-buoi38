@@ -6,7 +6,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body>
+<body class="bg-theme">
+<div th:replace="fragments/header :: header"></div>
 <div class="container mt-4">
     <h2 class="mb-3">Tất cả sách</h2>
     <div class="row">
@@ -14,10 +15,14 @@
             <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${b.title}"></h5>
-                    <p class="card-text" th:text="${b.author}"></p>
-                    <span th:src="@{/images/{img}(img=${b.image})}"
-                         style="display:block; margin:0 auto;">
-                    <a th:href="@{/books/{id}(id=${b.id})}" class="btn btn-primary w-100">Xem</a>
+                    <div class="btn"
+                         th:style="'color:white;background-color:' + ${b.category.color}"
+                         th:text="${b.category.name}"></div>
+                    <div class="card-text" th:text="${b.author}"></div>
+<!--                    <img th:src="@{/images/{img}(img=${b.image})}"-->
+<!--                         style="display:block; margin:0 auto;">-->
+
+                    <a th:href="@{/books/{id}(id=${b.id})}" class="btn btn-primary w-100">Xem chi tiết</a>
                 </div>
             </div>
         </div>
