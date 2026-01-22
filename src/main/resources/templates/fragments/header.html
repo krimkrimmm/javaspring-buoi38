@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 <!-- Header: Thanh điều hướng chính của website -->
 <header
         xmlns:th="http://www.thymeleaf.org"
         xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
     <!-- Logo / Tên hệ thống, click quay về trang chủ -->
+=======
+<header xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+>>>>>>> 5554403683ffe526db791dd694c5b1f66284e069
     <a href="/">📚 Mini Library</a>
 
     <!-- Link điều hướng tới trang chủ -->
@@ -14,7 +19,9 @@
 
     <!-- Link tới giỏ sách mượn của người dùng -->
     <a href="/cart">Giỏ sách</a>
+    <a href="/history">Lịch sử mượn</a>
 
+<<<<<<< HEAD
     <!-- Link xem lịch sử mượn/trả sách -->
     <a href="/history">Lịch sử mượn</a>
 
@@ -25,6 +32,11 @@
 
         <!-- Link đăng ký tài khoản -->
         <a href="/register" style="float: right">Đăng ký</a>
+=======
+    <span th:if="${user == null}">
+    <a href="/login" style="float: right">Đăng nhập</a>
+        <a href="/register"style="float: right">Đăng ký</a>
+>>>>>>> 5554403683ffe526db791dd694c5b1f66284e069
     </span>
 
     <!-- Hiển thị khi người dùng ĐÃ đăng nhập -->

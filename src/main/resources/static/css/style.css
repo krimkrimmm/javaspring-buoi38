@@ -10,6 +10,7 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
+<<<<<<< HEAD
 
 .bg-theme{
     background-image: url("/images/theme.jpg");
@@ -78,3 +79,67 @@ img {
 
 
 
+=======
+
+.bg-theme{
+    background-image: url("/images/theme.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+header {
+    background: #2c3e50;
+    padding: 15px;
+    color: white;
+}
+
+header a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+img {
+    max-width: 200px !important;
+    height: auto;
+}
+>>>>>>> 5554403683ffe526db791dd694c5b1f66284e069

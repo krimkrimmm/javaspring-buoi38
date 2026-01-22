@@ -12,6 +12,7 @@
 
     <!-- Import Bootstrap 5 để thiết kế giao diện -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
 
     <!-- Import CSS tùy chỉnh của hệ thống -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -24,6 +25,12 @@
 <div th:replace="fragments/header :: header"></div>
 
 <!-- Container bao nội dung chính -->
+=======
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="bg-theme">
+<div th:replace="fragments/header :: header"></div>
+>>>>>>> 5554403683ffe526db791dd694c5b1f66284e069
 <div class="container mt-4">
 
     <!-- Card hiển thị thông tin chi tiết sách -->
@@ -31,6 +38,7 @@
 
         <!-- Tiêu đề: tên sách -->
         <h2 th:text="${book.title}"></h2>
+<<<<<<< HEAD
 
         <!-- Tác giả -->
         <p>
@@ -85,6 +93,27 @@
         </form>
 
         <!-- Thông báo khi sách đã hết -->
+=======
+        <p>Tác giả: <span th:text="${book.author}"></span></p>
+        <img class="img-fluid mx-auto d-block"
+             th:src="@{/images/{img}(img=${book.image != null ? book.image : 'no-image.png'})}">
+        <p>NXB: <span th:text="${book.publisher}"></span></p>
+        <p>Năm XB: <span th:text="${book.publishYear}"></span></p>
+        <p>Giá:
+            <span th:text="${#numbers.formatDecimal(book.price, 0, 'POINT', 0, 'COMMA')}"></span> đ
+        </p>
+
+        <!--        <span th:style="'color:' + ${book.category.color}"-->
+<!--              th:text="${b.category.name}">-->
+<!--        </span>-->
+        <p>Số lượng: <span th:text="${book.quantity}"></span></p>
+        <form th:if="${book.quantity > 0}"
+              th:action="@{/cart/add/{id}(id=${book.id})}"
+              method="post">
+            <button class="btn btn-success">Thêm vào giỏ</button>
+        </form>
+
+>>>>>>> 5554403683ffe526db791dd694c5b1f66284e069
         <p th:if="${book.quantity == 0}" class="text-danger">
             Sách đã hết
         </p>
