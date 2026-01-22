@@ -1,80 +1,30 @@
-<!-- Khai báo tài liệu HTML5 -->
 <!DOCTYPE html>
-
-<!-- Thẻ html, khai báo namespace cho Thymeleaf -->
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <!-- Tiêu đề trang hiển thị trên trình duyệt -->
     <title>Trang chủ</title>
-
-    <!-- Import file CSS nội bộ thông qua Thymeleaf -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<<<<<<< HEAD
-=======
-<body class="bg-theme">
->>>>>>> 5554403683ffe526db791dd694c5b1f66284e069
-
-<!-- Thân trang, áp dụng giao diện nền theo class CSS -->
 <body class="bg-theme">
 
-<!-- Nhúng header dùng chung từ fragment Thymeleaf -->
 <div th:replace="fragments/header :: header"></div>
 
-<!-- Khối nội dung chính của trang -->
 <div class="container">
-
-    <!-- Tiêu đề khu vực hiển thị sách -->
     <h2>Sách mới & nổi bật</h2>
 
-    <!-- Lưới hiển thị danh sách sách -->
     <div class="book-grid">
-<<<<<<< HEAD
-=======
         <div class="card" th:each="book : ${books}">
             <h3 th:text="${book.title}"></h3>
             <p>Tác giả: <span th:text="${book.author}"></span></p>
-<!--            <img th:src="@{/images/{img}(img=${book.image})}">-->
+            <!--            <img th:src="@{/images/{img}(img=${book.image})}">-->
             <p>NXB: <span th:text="${book.publisher}"></span></p>
             <p>Giá: <span th:text="${book.price}"></span> đ</p>
->>>>>>> 5554403683ffe526db791dd694c5b1f66284e069
 
-        <!-- Lặp qua danh sách sách được truyền từ Controller -->
-        <div class="card" th:each="book : ${books}">
-
-            <!-- Hiển thị tên sách -->
-            <h3 th:text="${book.title}"></h3>
-
-            <!-- Hiển thị tên tác giả -->
-            <p>
-                Tác giả: <span th:text="${book.author}"></span>
-            </p>
-
-            <!-- Hình ảnh sách (tạm thời bị comment) -->
-            <!--
-            <img th:src="@{/images/{img}(img=${book.image})}">
-            -->
-
-            <!-- Hiển thị nhà xuất bản -->
-            <p>
-                NXB: <span th:text="${book.publisher}"></span>
-            </p>
-
-            <!-- Hiển thị giá sách -->
-            <p>
-                Giá: <span th:text="${book.price}"></span> đ
-            </p>
-
-            <!-- Nút chuyển tới trang chi tiết sách -->
             <a th:href="@{/books/{id}(id=${book.id})}">
                 <button>Xem chi tiết</button>
             </a>
-
         </div>
     </div>
 </div>
 
 </body>
 </html>
-

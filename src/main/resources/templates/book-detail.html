@@ -1,99 +1,16 @@
 <!DOCTYPE html>
-<!-- Khai báo tài liệu HTML5 -->
 <html xmlns:th="http://www.thymeleaf.org">
-<!-- Khai báo sử dụng Thymeleaf -->
-
 <head>
     <meta charset="UTF-8">
-    <!-- Thiết lập mã hóa UTF-8, hỗ trợ tiếng Việt -->
-
     <title>Chi tiết sách</title>
-    <!-- Tiêu đề trang hiển thị chi tiết sách -->
-
-    <!-- Import Bootstrap 5 để thiết kế giao diện -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
-
-    <!-- Import CSS tùy chỉnh của hệ thống -->
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-</head>
-
-<body class="bg-theme">
-<!-- Áp dụng style nền cho toàn trang -->
-
-<!-- Nhúng header dùng chung -->
-<div th:replace="fragments/header :: header"></div>
-
-<!-- Container bao nội dung chính -->
-=======
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body class="bg-theme">
 <div th:replace="fragments/header :: header"></div>
->>>>>>> 5554403683ffe526db791dd694c5b1f66284e069
 <div class="container mt-4">
-
-    <!-- Card hiển thị thông tin chi tiết sách -->
     <div class="card p-3">
-
-        <!-- Tiêu đề: tên sách -->
         <h2 th:text="${book.title}"></h2>
-<<<<<<< HEAD
-
-        <!-- Tác giả -->
-        <p>
-            Tác giả:
-            <span th:text="${book.author}"></span>
-        </p>
-
-        <!-- Ảnh sách (nếu không có ảnh thì dùng ảnh mặc định) -->
-        <img class="img-fluid mx-auto d-block"
-             th:src="@{/images/{img}(img=${book.image != null ? book.image : 'no-image.png'})}">
-
-        <!-- Nhà xuất bản -->
-        <p>
-            NXB:
-            <span th:text="${book.publisher}"></span>
-        </p>
-
-        <!-- Năm xuất bản -->
-        <p>
-            Năm XB:
-            <span th:text="${book.publishYear}"></span>
-        </p>
-
-        <!-- Giá sách, định dạng có dấu phân cách hàng nghìn -->
-        <p>
-            Giá:
-            <span th:text="${#numbers.formatDecimal(book.price, 0, 'POINT', 0, 'COMMA')}"></span> đ
-        </p>
-
-        <!-- (Đoạn comment: hiển thị danh mục sách theo màu – chưa sử dụng) -->
-        <!--
-        <span th:style="'color:' + ${book.category.color}"
-              th:text="${b.category.name}">
-        </span>
-        -->
-
-        <!-- Số lượng sách còn lại -->
-        <p>
-            Số lượng:
-            <span th:text="${book.quantity}"></span>
-        </p>
-
-        <!-- Form thêm sách vào giỏ khi còn sách -->
-        <form th:if="${book.quantity > 0}"
-              th:action="@{/cart/add/{id}(id=${book.id})}"
-              method="post">
-
-            <!-- Nút thêm vào giỏ -->
-            <button class="btn btn-success">
-                Thêm vào giỏ
-            </button>
-        </form>
-
-        <!-- Thông báo khi sách đã hết -->
-=======
         <p>Tác giả: <span th:text="${book.author}"></span></p>
         <img class="img-fluid mx-auto d-block"
              th:src="@{/images/{img}(img=${book.image != null ? book.image : 'no-image.png'})}">
@@ -104,8 +21,8 @@
         </p>
 
         <!--        <span th:style="'color:' + ${book.category.color}"-->
-<!--              th:text="${b.category.name}">-->
-<!--        </span>-->
+        <!--              th:text="${b.category.name}">-->
+        <!--        </span>-->
         <p>Số lượng: <span th:text="${book.quantity}"></span></p>
         <form th:if="${book.quantity > 0}"
               th:action="@{/cart/add/{id}(id=${book.id})}"
@@ -113,14 +30,11 @@
             <button class="btn btn-success">Thêm vào giỏ</button>
         </form>
 
->>>>>>> 5554403683ffe526db791dd694c5b1f66284e069
         <p th:if="${book.quantity == 0}" class="text-danger">
             Sách đã hết
         </p>
 
     </div>
 </div>
-
 </body>
 </html>
-

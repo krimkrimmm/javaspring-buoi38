@@ -18,5 +18,8 @@ public class HomeController {
     public String home(Model model) {
         model.addAttribute("books", bookService.findAll());
         return "index";
+
+
     }
+
 }

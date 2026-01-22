@@ -3,7 +3,8 @@ package vn.scrip.buoi38_bvn.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import vn.scrip.buoi38_bvn.entities.User;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
 
-    User findByEmail(String email);
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
 }

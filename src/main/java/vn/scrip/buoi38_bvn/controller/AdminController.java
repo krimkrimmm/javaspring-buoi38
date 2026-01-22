@@ -38,5 +38,13 @@ public class AdminController {
     public String deleteUser(@PathVariable Long id) {
         userService.delete(id);
         return "redirect:/admin/users";
+
     }
+    //bcao- thong ke
+    @GetMapping("/dashboard")
+    public String dashboard(Model model) {
+        model.addAttribute("totalUsers", userService.getAllUsers().size());
+        return "admin-dashboard";
+    }
+
 }

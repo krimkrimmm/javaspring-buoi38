@@ -1,10 +1,14 @@
 package vn.scrip.buoi38_bvn.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "borrows")
+@Getter
+@Setter
 public class Borrow {
 
     @Id
@@ -21,19 +25,5 @@ public class Borrow {
 
     private LocalDate borrowDate;
 
-    private boolean returned = false;
-
-    // ===== Getter Setter =====
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
-    public Book getBook() { return book; }
-    public void setBook(Book book) { this.book = book; }
-    public int getQuantity() { return quantity; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
-    public LocalDate getBorrowDate() { return borrowDate; }
-    public void setBorrowDate(LocalDate borrowDate) { this.borrowDate = borrowDate; }
-    public boolean isReturned() { return returned; }
-    public void setReturned(boolean returned) { this.returned = returned; }
+    private String status; // ĐANG_MUON | DA_TRA
 }
