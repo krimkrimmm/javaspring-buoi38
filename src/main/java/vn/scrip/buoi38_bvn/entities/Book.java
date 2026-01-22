@@ -46,10 +46,6 @@ public class Book {
     public LocalDateTime getCreatedAt() { return createdAt; }
     public String getImage() { return image; }
     public void setImage(String image) { this.image = image; }
-<<<<<<< HEAD:src/main/java/vn/scrip/buoi38_bvn/entities/Book.java
-}
-=======
+
 }
 
-
->>>>>>> 5554403683ffe526db791dd694c5b1f66284e069:src/main/java/vn/scrip/buoi38_bvn/entites/Book.java
