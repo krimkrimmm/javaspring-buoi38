@@ -31,6 +31,8 @@ public class CartController {
     public String add(@PathVariable Long id, HttpSession session) {
 
         Book book = bookService.findById(id);
+        User user = (User) session.getAttribute("user");
+        if (user == null) return "redirect:/login";
         if (book == null) return "redirect:/books";
 
         List<CartItem> cart = (List<CartItem>) session.getAttribute("cart");
@@ -62,17 +64,7 @@ public class CartController {
 
         if (user == null || cart == null) return "redirect:/login";
 
-        for (CartItem item : cart) {
-            Borrow borrow = new Borrow();
-            borrow.setUser(user);
-            borrow.setBook(item.getBook());
-            borrow.setQuantity(item.getQuantity());
-            borrowService.borrow(borrow);
-
-            Book book = item.getBook();
-            book.setQuantity(book.getQuantity() - item.getQuantity());
-            bookService.save(book);
-        }
+        borrowService.saveOrders(cart, user);
 
         session.removeAttribute("cart");
         return "redirect:/reader/borrows";
@@ -84,8 +76,7 @@ public class CartController {
                                @RequestParam int quantity,
                                HttpSession session) {
 
-        List<CartItem> cart =
-                (List<CartItem>) session.getAttribute("cart");
+        List<CartItem> cart = (List<CartItem>) session.getAttribute("cart");
 
         if (cart == null) return;
 

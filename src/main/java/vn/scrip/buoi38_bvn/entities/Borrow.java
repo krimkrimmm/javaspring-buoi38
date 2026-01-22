@@ -5,10 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "borrow")
 public class Borrow {
 
     @Id
@@ -18,12 +21,12 @@ public class Borrow {
     @ManyToOne
     private User user;
 
-    @ManyToOne
-    private Book book;
-
-    private int quantity;
+    @OneToMany(mappedBy = "borrow", cascade = CascadeType.ALL)
+    private List<BorrowDetail> borrowDetails = new ArrayList<>();
 
     private LocalDate borrowDate;
 
-    private String status; // ĐANG_MUON | DA_TRA
+    private LocalDate dueDate;
+    private String status;
+
 }

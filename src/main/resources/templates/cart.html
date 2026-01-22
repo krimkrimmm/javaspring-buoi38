@@ -72,6 +72,15 @@
                 body: `bookId=${bookId}`
             });
         }
+        function borrowOrder() {
+            fetch('/cart/checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: ``
+            });
+        }
 
         updateTotalQuantity();
 
@@ -106,6 +115,7 @@
 
         document.getElementById('checkout').addEventListener('click', () => {
             alert('Đã xác nhận mượn ' + totalQuantityEl.textContent + ' cuốn sách!');
+            borrowOrder();
             window.location.href = '/';
         });
     });

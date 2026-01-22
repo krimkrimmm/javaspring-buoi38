@@ -6,13 +6,16 @@
     <a href="/cart">Giỏ sách</a>
     <a href="/history">Lịch sử mượn</a>
 
-    <span th:if="${user == null}">
-    <a href="/login" style="float: right">Đăng nhập</a>
-        <a href="/register"style="float: right">Đăng ký</a>
-    </span>
-
     <span th:if="${session.user != null}">
-        <b th:text="${session.user.fullName}"></b>
-        <a href="/logout">Đăng xuất</a>
+        <a href="/cart">Giỏ sách</a>
+        <a href="/history">Lịch sử mượn</a>
+    </span>
+    <span th:if="${session.user == null}">
+        <a href="/login" style="float: right">Đăng nhập</a>
+        <a href="/register" style="float: right">Đăng ký</a>
+    </span>
+    <span th:if="${session.user != null}">
+        <a style="float: right" href="/logout">Đăng xuất</a>
+        <!--        <b style="float: right" th:text="${session.user.fullName}"></b>-->
     </span>
 </header>
