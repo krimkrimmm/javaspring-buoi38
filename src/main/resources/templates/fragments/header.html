@@ -1,19 +1,39 @@
-<header xmlns:th="http://www.w3.org/1999/xhtml">
+<!-- Header: Thanh điều hướng chính của website -->
+<header
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <!-- Logo / Tên hệ thống, click quay về trang chủ -->
     <a href="/">📚 Mini Library</a>
+
+    <!-- Link điều hướng tới trang chủ -->
     <a href="/">Trang chủ</a>
+
+    <!-- Link tới trang danh sách sách -->
     <a href="/books">Sách</a>
+
+    <!-- Link tới giỏ sách mượn của người dùng -->
     <a href="/cart">Giỏ sách</a>
 
-    <span th:if="${session.user == null}">
+    <!-- Link xem lịch sử mượn/trả sách -->
+    <a href="/history">Lịch sử mượn</a>
+
+    <!-- Hiển thị khi người dùng CHƯA đăng nhập -->
+    <span th:if="${user == null}">
+        <!-- Link đăng nhập -->
         <a href="/login" style="float: right">Đăng nhập</a>
-        <a href="/register"style="float: right">Đăng ký</a>
+
+        <!-- Link đăng ký tài khoản -->
+        <a href="/register" style="float: right">Đăng ký</a>
     </span>
 
+    <!-- Hiển thị khi người dùng ĐÃ đăng nhập -->
     <span th:if="${session.user != null}">
+        <!-- Hiển thị họ tên người dùng -->
         <b th:text="${session.user.fullName}"></b>
+
+        <!-- Link đăng xuất -->
         <a href="/logout">Đăng xuất</a>
     </span>
+
 </header>
-
-
-

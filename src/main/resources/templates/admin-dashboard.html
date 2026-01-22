@@ -1,31 +1,80 @@
 <!DOCTYPE html>
+<!-- Khai báo tài liệu HTML5 -->
 <html xmlns:th="http://www.thymeleaf.org">
+<!-- Khai báo sử dụng Thymeleaf -->
+
 <head>
     <meta charset="UTF-8">
+    <!-- Thiết lập mã hóa UTF-8, hỗ trợ tiếng Việt -->
+
     <title>Admin Dashboard</title>
+    <!-- Tiêu đề trang tổng quan quản trị -->
+
+    <!-- Import CSS tùy chỉnh bằng Thymeleaf -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Import Bootstrap 5 để thiết kế giao diện -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
+
 <body>
+
+<!-- Header đơn giản cho trang admin -->
 <header>
+    <!-- Link đăng xuất khỏi hệ thống -->
     <a th:href="@{/logout}">Đăng xuất</a>
 </header>
+
+<!-- Container bao toàn bộ nội dung -->
 <div class="container mt-4">
+
+    <!-- Khu vực quản lý người dùng -->
     <h2>Quản lý người dùng</h2>
+
+    <!-- Lặp qua danh sách người dùng -->
     <div class="card p-3 mb-2" th:each="u : ${users}">
-        <p><strong th:text="${u.fullName}"></strong> - <span th:text="${u.email}"></span> - <span th:text="${u.role}"></span></p>
-        <a th:href="@{/admin/users/delete/{id}(id=${u.id})}"><button class="btn btn-danger btn-sm">Xóa</button></a>
+        <!-- Hiển thị họ tên, email và vai trò -->
+        <p>
+            <strong th:text="${u.fullName}"></strong> -
+            <span th:text="${u.email}"></span> -
+            <span th:text="${u.role}"></span>
+        </p>
+
+        <!-- Nút xóa người dùng theo ID -->
+        <a th:href="@{/admin/users/delete/{id}(id=${u.id})}">
+            <button class="btn btn-danger btn-sm">Xóa</button>
+        </a>
     </div>
 
+    <!-- Khu vực quản lý sách -->
     <h2 class="mt-4">Quản lý sách</h2>
+
+    <!-- Lặp qua danh sách sách -->
     <div class="card p-3 mb-2" th:each="b : ${books}">
-        <p><strong th:text="${b.title}"></strong> - <span th:text="${b.author}"></span></p>
+        <!-- Hiển thị tên sách và tác giả -->
+        <p>
+            <strong th:text="${b.title}"></strong> -
+            <span th:text="${b.author}"></span>
+        </p>
     </div>
 
+    <!-- Khu vực quản lý mượn/trả -->
     <h2 class="mt-4">Danh sách mượn</h2>
+
+    <!-- Lặp qua danh sách mượn -->
     <div class="card p-3 mb-2" th:each="br : ${borrows}">
-        <p><span th:text="${br.user.fullName}"></span> mượn <span th:text="${br.book.title}"></span> - <span th:text="${br.status}"></span></p>
+        <!-- Hiển thị người mượn, sách và trạng thái -->
+        <p>
+            <span th:text="${br.user.fullName}"></span>
+            mượn
+            <span th:text="${br.book.title}"></span> -
+            <span th:text="${br.status}"></span>
+        </p>
     </div>
+
 </div>
+
 </body>
 </html>
+

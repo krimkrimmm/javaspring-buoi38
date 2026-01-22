@@ -1,28 +1,57 @@
 <!DOCTYPE html>
+<!-- Khai báo tài liệu HTML5 -->
 <html lang="vi" xmlns:th="http://www.w3.org/1999/xhtml">
+<!-- Khai báo ngôn ngữ tiếng Việt và sử dụng Thymeleaf -->
+
 <head>
     <meta charset="UTF-8">
-    <title>Thống kê - Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Thiết lập mã hóa UTF-8, hỗ trợ tiếng Việt -->
 
+    <title>Thống kê - Admin</title>
+    <!-- Tiêu đề trang thống kê dành cho quản trị viên -->
+
+    <!-- Import Bootstrap 5 để thiết kế giao diện -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
+
+<!-- Container bao nội dung thống kê -->
 <div class="container mt-4">
+
+    <!-- Tiêu đề chức năng -->
     <h2>Thống kê thư viện</h2>
+
+    <!-- Danh sách hiển thị các chỉ số thống kê -->
     <ul class="list-group">
-        <li class="list-group-item">Tổng số người dùng: <b th:text="${totalUsers}"></b></li>
-        <li class="list-group-item">Tổng số sách: <b th:text="${totalBooks}"></b></li>
-        <li class="list-group-item">Sách đang mượn: <b th:text="${booksBorrowed}"></b></li>
-        <li class="list-group-item">Sách còn lại: <b th:text="${booksAvailable}"></b></li>
+
+        <!-- Tổng số người dùng trong hệ thống -->
+        <li class="list-group-item">
+            Tổng số người dùng:
+            <b th:text="${totalUsers}"></b>
+        </li>
+
+        <!-- Tổng số sách trong thư viện -->
+        <li class="list-group-item">
+            Tổng số sách:
+            <b th:text="${totalBooks}"></b>
+        </li>
+
+        <!-- Tổng số sách đang được mượn -->
+        <li class="list-group-item">
+            Sách đang mượn:
+            <b th:text="${booksBorrowed}"></b>
+        </li>
+
+        <!-- Tổng số sách còn lại trong kho -->
+        <li class="list-group-item">
+            Sách còn lại:
+            <b th:text="${booksAvailable}"></b>
+        </li>
 
     </ul>
 </div>
+
 </body>
 </html>
-
-
-
-
-
-
 
