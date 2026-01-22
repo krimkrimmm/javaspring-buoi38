@@ -99,8 +99,5 @@ public class CartController {
         session.setAttribute("cart", cart);
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 5554403683ffe526db791dd694c5b1f66284e069
+
