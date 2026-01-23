@@ -17,7 +17,11 @@
             <input name="fullName" placeholder="Họ tên">
             <input name="email" placeholder="Email">
             <input type="password" name="password" placeholder="Mật khẩu">
-            <button>Đăng ký</button>
+            <input type="password" name="repeatPassword" placeholder="Nhập lại mật khẩu">
+            <a th:href="@{/login}" class="btn btn-secondary">
+                ← Quay lại
+            </a>
+            <button class="btn btn-primary">Đăng ký</button>
         </form>
 
 

@@ -35,8 +35,55 @@
     document.addEventListener('DOMContentLoaded', function () {
         const cartItems = document.querySelectorAll('#cart-items .list-group-item');
 
+<<<<<<< HEAD
         cartItems.forEach(item => {
             const idx = item.dataset.index;
+=======
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalQuantityEl = document.getElementById('total-quantity');
+
+        function updateTotalQuantity() {
+            let total = 0;
+            document.querySelectorAll('.quantity').forEach(qty => {
+                total += parseInt(qty.textContent);
+            });
+            totalQuantityEl.textContent = total;
+        }
+
+        function updateBackend(bookId, quantity) {
+            fetch('/cart/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `bookId=${bookId}&quantity=${quantity}`
+            });
+        }
+
+        function removeBackend(bookId) {
+            fetch('/cart/remove', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `bookId=${bookId}`
+            });
+        }
+        function borrowOrder() {
+            fetch('/cart/checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: ``
+            });
+        }
+
+        updateTotalQuantity();
+
+        cartItemsContainer.querySelectorAll('.list-group-item').forEach(item => {
+
+>>>>>>> 31513c7b17ddf40d8746ad8a3b230501aa5905c4
             const quantityEl = item.querySelector('.quantity');
 
             item.querySelector('.increase').addEventListener('click', () => {
@@ -54,7 +101,13 @@
             });
         });
         document.getElementById('checkout').addEventListener('click', () => {
+<<<<<<< HEAD
             alert('Đã xác nhận mượn sách! (chức năng backend sẽ xử lý)');
+=======
+            alert('Đã xác nhận mượn ' + totalQuantityEl.textContent + ' cuốn sách!');
+            borrowOrder();
+            window.location.href = '/';
+>>>>>>> 31513c7b17ddf40d8746ad8a3b230501aa5905c4
         });
     });
 </script>

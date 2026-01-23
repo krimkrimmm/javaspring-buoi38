@@ -36,8 +36,8 @@ public class ReaderController {
         if (user != null && book != null && book.getQuantity() > 0) {
             Borrow borrow = new Borrow();
             borrow.setUser(user);
-            borrow.setBook(book);
-            borrow.setQuantity(1);
+//            borrow.setBook(book);
+//            borrow.setQuantity(1);
             borrowService.borrow(borrow);
 
             book.setQuantity(book.getQuantity() - 1);
@@ -52,9 +52,9 @@ public class ReaderController {
         if (borrow != null) {
             borrowService.returnBook(borrowId);
 
-            Book book = borrow.getBook();
-            book.setQuantity(book.getQuantity() + 1);
-            bookService.save(book);
+//            Book book = borrow.getBook();
+//            book.setQuantity(book.getQuantity() + 1);
+//            bookService.save(book);
         }
         return "redirect:/reader/borrows";
     }

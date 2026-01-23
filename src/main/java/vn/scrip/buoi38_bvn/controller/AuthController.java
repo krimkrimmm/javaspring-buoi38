@@ -25,7 +25,7 @@ public class AuthController {
             switch(user.getRole()) {
                 case ADMIN: return "redirect:/admin/books";
                 case LIBRARIAN: return "redirect:/librarian/books";
-                case READER: return "redirect:/books";
+                case READER: return "redirect:/";
             }
         }
         return "login";

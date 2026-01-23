@@ -22,4 +22,8 @@ public class BorrowDetail {
     private Book book;
 
     private int quantity;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 31513c7b17ddf40d8746ad8a3b230501aa5905c4

@@ -43,8 +43,8 @@ public class BorrowController {
 
         Borrow borrow = new Borrow();
         borrow.setUser(user);
-        borrow.setBook(book);
-        borrow.setQuantity(1);
+//        borrow.setBook(book);
+//        borrow.setQuantity(1);
         borrow.setBorrowDate(LocalDate.now());
 
         borrowService.borrow(borrow);
