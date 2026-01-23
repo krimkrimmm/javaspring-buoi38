@@ -1,10 +1,8 @@
 package vn.scrip.buoi38_bvn.services;
-
 import org.springframework.stereotype.Service;
 import vn.scrip.buoi38_bvn.entities.Role;
 import vn.scrip.buoi38_bvn.entities.User;
 import vn.scrip.buoi38_bvn.repository.UserRepository;
-
 import java.util.List;
 
 @Service
