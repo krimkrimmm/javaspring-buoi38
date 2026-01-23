@@ -28,14 +28,10 @@ public class CartController {
 
     @PostMapping("/add/{id}")
     public String add(@PathVariable Long id, HttpSession session) {
-<<<<<<< HEAD
-        Book book = bookService.findById(id); // ✅ SỬA
-=======
 
         Book book = bookService.findById(id);
         User user = (User) session.getAttribute("user");
         if (user == null) return "redirect:/login";
->>>>>>> 31513c7b17ddf40d8746ad8a3b230501aa5905c4
         if (book == null) return "redirect:/books";
 
         List<CartItem> cart = (List<CartItem>) session.getAttribute("cart");
@@ -59,9 +55,6 @@ public class CartController {
         session.removeAttribute("cart");
         return "redirect:/reader/borrows";
     }
-<<<<<<< HEAD
-}
-=======
 
     @PostMapping("/cart/update")
     @ResponseBody
@@ -85,4 +78,3 @@ public class CartController {
 
 }
 
->>>>>>> 31513c7b17ddf40d8746ad8a3b230501aa5905c4

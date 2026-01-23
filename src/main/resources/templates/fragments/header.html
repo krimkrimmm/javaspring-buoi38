@@ -1,20 +1,11 @@
-<header xmlns:th="http://www.w3.org/1999/xhtml">
+<header xmlns:th="http://www.thymeleaf.org">
     <a href="/">📚 Mini Library</a>
     <a href="/">Trang chủ</a>
     <a href="/books">Sách</a>
-    <a href="/cart">Giỏ sách</a>
 
-<<<<<<< HEAD
-    <span th:if="${session.user == null}">
-        <a href="/login" style="float: right">Đăng nhập</a>
-        <a href="/register"style="float: right">Đăng ký</a>
-    </span>
-
-=======
->>>>>>> 31513c7b17ddf40d8746ad8a3b230501aa5905c4
     <span th:if="${session.user != null}">
         <a href="/cart">Giỏ sách</a>
-        <a href="/history">Lịch sử mượn</a>
+        <a href="/borrow">Lịch sử mượn</a>
     </span>
     <span th:if="${session.user == null}">
         <a href="/login" style="float: right">Đăng nhập</a>

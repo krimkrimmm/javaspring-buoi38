@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@Table(name = "books")
 public class Book {
 
     @Id
@@ -29,8 +30,4 @@ public class Book {
     @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 31513c7b17ddf40d8746ad8a3b230501aa5905c4

@@ -8,6 +8,7 @@ import vn.scrip.buoi38_bvn.entities.Borrow;
 import vn.scrip.buoi38_bvn.entities.User;
 import vn.scrip.buoi38_bvn.services.BookService;
 import vn.scrip.buoi38_bvn.services.BorrowService;
+import org.springframework.ui.Model;
 
 import java.time.LocalDate;
 
@@ -55,4 +56,12 @@ public class BorrowController {
         redirectAttributes.addFlashAttribute("successMessage", "Mượn sách thành công");
         return "redirect:/reader/borrows";
     }
+
+    @GetMapping("/borrow")
+    public String borrowHistory(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("borrow", borrowService.findByUser(user.getId()));
+        return "borrow";
+    }
+
 }
